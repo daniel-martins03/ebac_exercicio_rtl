@@ -1,15 +1,17 @@
-import Post from "./components/Post";
+// Importa as funções necessárias para testar componentes React
+import { render, screen } from '@testing-library/react';
+// Importa o componente App para teste
+import App from './App';
 
-import styles from './App.module.css';
-
-function App() {
-  return (
-    <div className={styles.app}>
-      <Post imageUrl="https://www.orangeboxminiaturas.com.br/img/products/batmovel-1989-figura-batman-em-metal-jada-toys-1-24-jad-98260_1_1000.jpg">
-        Olha só que legal minha miniatura do Batmóvel.
-      </Post>
-    </div>
-  );
-}
-
-export default App;
+// Inicia uma suíte de testes para o componente App
+describe('Test <App />', () => {
+    // Define um caso de teste individual
+    it('Expect render correctly', () => {
+        // Renderiza o componente App
+        render(
+            <App />
+        );
+        // Verifica se um elemento com o atributo 'data-testid' igual a 'comment-button' está presente no documento
+        expect(screen.getByTestId('comment-button')).toBeInTheDocument();
+    });
+})
